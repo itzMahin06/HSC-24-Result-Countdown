@@ -111,6 +111,45 @@
                 font-size: 0.8rem;
             }
         }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        } 
+.share-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.5rem;
+            transition: background 0.3s ease;
+        } 
+
+        .share-btn.facebook {
+            background-color: #3b5998;
+        }
+
+        .share-btn.facebook:hover {
+            background-color: #334d84;
+        }
+
+        .share-btn.twitter {
+            background-color: #1da1f2;
+        }
+
+        .share-btn.twitter:hover {
+            background-color: #1a8cd8;
+        }
+
+        .share-btn.messenger {
+            background-color: #0084ff;
+        }
+        .share-btn.messenger:hover {
+            background-color: #0071e5;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +177,11 @@
     <div class="description">
         The countdown is ticking for the much-awaited HSC 2024 results! Stay tuned for the announcement on 15 October 2024, 11:00 AM.
     </div>
-
+<div class="share-buttons">
+        <a href="#" class="share-btn facebook" id="facebook-share">Share on Facebook</a>
+        <a href="#" class="share-btn twitter" id="twitter-share">Share on Twitter</a>
+        <a href="#" class="share-btn messenger" id="messenger-share">Share on Messenger</a>
+    </div> 
     <footer>
         &copy; 2024 itzMahin. All rights reserved.
     </footer>
@@ -175,6 +218,28 @@
             }
         }, 1000);
     </script>
+<script>
+        const shareUrl = "https://itzmahin06.github.io/HSC-24-Result-Countdown";
+        
+        // Facebook Share
+        document.getElementById('facebook-share').addEventListener('click', function(e) {
+            e.preventDefault();
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+            window.open(facebookUrl, '_blank');
+        });
 
+        // Twitter Share
+        document.getElementById('twitter-share').addEventListener('click', function(e) {
+            e.preventDefault();
+            const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=Check%20out%20this%20HSC%202024%20Result%20Countdown!`;
+            window.open(twitterUrl, '_blank');
+        });
+    // Messenger Share (Web-based)
+        document.getElementById('messenger-share').addEventListener('click', function(e) {
+            e.preventDefault();
+            const messengerUrl = `https://www.facebook.com/dialog/send?link=${encodeURIComponent(shareUrl)}&app_id=YOUR_APP_ID&redirect_uri=${encodeURIComponent(shareUrl)}`;
+            window.open(messengerUrl, '_blank');
+        });
+    </script> 
 </body>
 </html>
