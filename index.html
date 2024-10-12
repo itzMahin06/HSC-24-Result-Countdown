@@ -17,31 +17,39 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #333;
+            text-align: center;
+            margin: 0;
         }
 
         .countdown {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-top: 20px;
+            max-width: 100%;
         }
 
         .countdown div {
             background: #008080;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             color: #fff;
             text-align: center;
-            font-size: 1.5rem;
+            flex: 1 1 80px; /* Makes each countdown box take equal space */
+            min-width: 60px;
+            margin: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
             animation: fadeIn 2s ease-in-out;
         }
 
         .countdown div span {
             display: block;
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 5px;
             animation: pulse 1s infinite;
         }
 
@@ -66,15 +74,42 @@
         }
 
         .description {
-            margin-top: 30px;
-            font-size: 1.2rem;
+            margin-top: 20px;
+            font-size: 1rem;
             color: #555;
+            text-align: center;
+            padding: 0 20px;
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 1rem;
+            margin-top: 20px;
+            font-size: 0.9rem;
             color: #aaa;
+            text-align: center;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .countdown div {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .countdown div span {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
