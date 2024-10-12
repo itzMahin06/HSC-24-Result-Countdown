@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Countdown Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .countdown {
+            display: flex;
+            text-align: center;
+            font-size: 1.5rem;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown div {
+            margin: 0 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            width: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown div:hover {
+            transform: scale(1.1);
+        }
+
+        .countdown div span {
+            display: block;
+            font-size: 2.5rem;
+            color: #ffdc00;
+        }
+
+        .countdown div p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.8;
+            color: #ddd;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 600px) {
+            .countdown {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .countdown div {
+                margin: 0 5px;
+                padding: 10px;
+                width: 60px;
+            }
+
+            .countdown div span {
+                font-size: 2rem;
+            }
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .countdown div span {
+            animation: pulse 1s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown">
+        <div>
+            <span id="days">0</span>
+            <p>Days</p>
+        </div>
+        <div>
+            <span id="hours">0</span>
+            <p>Hours</p>
+        </div>
+        <div>
+            <span id="minutes">0</span>
+            <p>Minutes</p>
+        </div>
+        <div>
+            <span id="seconds">0</span>
+            <p>Seconds</p>
+        </div>
+    </div>
+
+    <script>
+        const countdown = () => {
+            const targetDate = new Date("October 15, 2024 11:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (difference < 0) {
+                document.querySelector('.countdown').innerHTML = "<h1>Countdown Ended!</h1>";
+            }
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+
+</body>
+</html>
